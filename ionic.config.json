@@ -1,0 +1,7 @@
+{
+  "name": "empleionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
