@@ -25,3 +25,12 @@
 #container a {
   text-decoration: none;
 }
+
+.center{
+  text-align: center;
+}
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+  background: #eb445a
+}
+

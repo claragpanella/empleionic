@@ -1,20 +1,37 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
+<ion-header [translucent]="true" >
+  <ion-toolbar color="light">
+    <ion-title class="ion-text-center" >
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/13/Kia-logo.png" alt="Logo" width="90" height="50" class="d-inline-block align-text-center">
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content class="ion-padding">
+  <div class="center">
+    <ion-button color="danger" routerLink="/create">Agregar empleado<ion-icon name="add-circle"></ion-icon></ion-button>
   </div>
+
+  <ion-searchbar color="dark" name="search" [(ngModel)]="searchText" placeholder="Buscar"></ion-searchbar>
+
+
+    <ion-row *ngFor="let empleado of empleados | filter: searchText | paginate: { itemsPerPage: 3, currentPage: page, totalItems: empleados.length  }" >
+      <ion-col class="content-col">
+        <ion-text color="dark">
+          <h2 class="user-name">{{empleado.nombre}} {{empleado.apellido}}</h2>
+        </ion-text>
+  
+        <ion-list>
+          <ion-item>
+            <ion-label position="stacked">DNI</ion-label>
+            <ion-input color="primary" readonly="true">{{empleado.DNI}}</ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Sueldo</ion-label>
+            <ion-input color="primary" readonly="true">{{empleado.sueldo | currency}}</ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
 </ion-content>
+  <pagination-controls class="my-pagination" (pageChange)="page = $event" previousLabel="" nextLabel="" ></pagination-controls>
