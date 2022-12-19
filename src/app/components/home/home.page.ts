@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CreatePage } from '../create/create.page';
-import { EmpleadoService } from '../services/empleado.service';
+import { Empleado } from 'src/app/models/empleado';
+import { EmpleadoService } from '../../services/empleado.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ import { EmpleadoService } from '../services/empleado.service';
 export class HomePage implements OnInit {
   public page!: number;
   searchText: any;
-  empleados: any[] = [];
+  empleados: Empleado[] = [];
 
   constructor(private _empleadoService: EmpleadoService) {}
 

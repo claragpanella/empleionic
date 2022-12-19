@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EmpleadoService } from '../services/empleado.service';
+import { Empleado } from 'src/app/models/empleado';
+import { EmpleadoService } from '../../services/empleado.service';
 
 @Component({
   selector: 'app-create',
@@ -37,7 +38,7 @@ export class CreatePage implements OnInit {
       return;
     }
 
-    const empleado: any = {
+    const empleado: Empleado = {
       nombre: this.createEmpleado.value.nombre,
       apellido: this.createEmpleado.value.apellido,
       DNI: this.createEmpleado.value.DNI,
